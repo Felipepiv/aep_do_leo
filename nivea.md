@@ -15,3 +15,36 @@ existentes antes de escrever.
 As Threads em si não conseguem acessar diretamente o disco, por questões 
 de segurança e integridade dos dados, considerando que duas gravações 
 simultâneas poderiam corromper o sistema de arquivos.
+
+
+## Análise das System Calls Observadas
+
+<div align="center">
+    <img src="imagens/strace.png" alt="print do terminal debian com strace ls" width="650">
+</div>
+
+Ao executar `strace ls`, é possível observar dezenas de chamadas de sistema
+acontecendo em sequência, mesmo para um comando aparentemente simples. Isso
+evidencia que o programa `ls`, rodando em *user space*, depende constantemente
+do kernel para realizar qualquer operação que envolva hardware ou arquivos.
+
+<div align="center">
+    <img src="imagens/strace-filtro.png" alt="print do terminal debian com strace ls, focado nas system calls (open, openat, read e close)" width="650">
+</div>
+
+<div align="center">
+    <img src="imagens/write.png" alt="print do terminal debian com strace ls, para demonstrar write" width="650">
+</div>
+
+* Open / openat — Abertura de arquivos <br>
+O `openat` é a versão moderna do `open`, usada pelo Linux para evitar
+condições de corrida ao resolver caminhos relativos. 
+* Read — Leitura de dados <br>
+Após abrir cada biblioteca, o processo faz a leitura do seu conteúdo binário
+através do descritor retornado pelo `open`/`openat`.
+* Write — Escrita de dados <br>
+É a chamada que entrega o resultado do comando ao usuário, escrevendo os
+dados no descritor de saída padrão (stdout).
+* Close — Fechamento de descritores <br>
+Ao final do uso de cada arquivo, o processo fecha o descritor correspondente,
+liberando o recurso.
