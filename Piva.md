@@ -1,6 +1,6 @@
 # Como a comunicação entre o software do galpão conversa com o hardware do servidor?
 
-Para garantir qeu a comunicação entre o software e o hardware ocorra de forma segura e sem corromper o sistema de arquivos, utiliza-se o Sistema Operacional(Debian). Ele atua com base no conceito de máquina flexível(ou estendida) e intermedeia todas as operações por meio das System Calls.
+Para garantir qeu a comunicação entre o software e o hardware ocorra de forma segura e sem corromper o sistema de arquivos, utiliza-se o Sistema Operacional(Debian). Ele atua com base no conceito de máquina flexível(ou estendida) e concilia todas as operações por meio das System Calls.
 
 # S.O como uma máquina flexível:
 
