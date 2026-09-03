@@ -16,8 +16,19 @@ Modo Kernel: É o modo privilegiado onde apenas o núcleo do Sistema Operacional
 
 São usadas quando o software do galpão precisa realizar qualquer ação no mundo físico para salvar um registro de um médico no disco. O software não consegue fazer isso sozinho por estar no modo usuário.
 
-### como que funciona o uso das System calls:
+### Permissões que as System Calls precisam pedir para o S.O:
 
+Solicitação: usa o comando *write* para gravar ou *open* para abrir aquivos
+
+troca de modo(TRAP): A System call aciona uma interrupção do hardware/software para fazer a troca do *modo Usuário* para o *modo Kernel*.
+
+Validação e Execução: O kernel do debian assume o controle, verifica se o programa tem permissões para fazer aquela alteração organizando a fila E/S(Entrada/Saída) para evitar que duas operações se colidam e escreve com seguraça os dados do disco rígido.
+
+Retorno: O kernel vai devolver a resposta para o programa e altera a CPU de volta para o modo Usuário.
+
+# Em resumo:
+
+Usando as system Calls, o S.O vai funcionar como um gerente centrral de logística. Todas as solicitações de hardware passam por ele em uma fila organizada e segura, deixando o hardware 100% protegido contra erros de aplicações. 
 
 
 
