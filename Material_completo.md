@@ -16,7 +16,7 @@ O que é: É o modo restrito onde rodam os programas comuns que você usa no dia
 Modo Kernel: 
 O que é: É o modo privilegiado onde roda o núcleo do sistema operacional (o Kernel) e os drivers de dispositivos
 
-.Como funciona: Nesse modo, o software tem acesso total e irrestrito ao hardware e à memória. Qualquer falha aqui pode travar o computador completamente (gerando a famosa "tela azul").
+.Como funciona: O kernel tem acesso irrestrito a todo o hardware e à memória do computador. Ele gerencia os processos, os drivers de dispositivos e controla quem pode acessar o quê.
 
 # O papel das System calls:
 
