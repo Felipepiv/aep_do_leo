@@ -8,9 +8,15 @@ O S.O cria uma camada por cima do hardware para ocultar sua complexidade, aprese
 
 # A separação dos modos: como o hardware é protegido
 
-Modo de Usuário: É onde o seu software do galpão (o sistema web, o script de triagem, etc.) roda. Nesse modo, o código tem restrições estritas: não pode executar instruções críticas do processador sem acessar o hardware diretamente.
+Modo de Usuário: 
+O que é: É o modo restrito onde rodam os programas comuns que você usa no dia a dia (como o navegador de internet, jogos ou editores de texto)
 
-Modo Kernel: É o modo privilegiado onde apenas o núcleo do Sistema Operacional (o Kernel do Debian) executa. Ele tem acesso total a todos os componentes físicos da máquina.
+.Como funciona: Os programas nesse modo não têm acesso direto ao hardware ou à memória física do sistema. Se um programa travar ou tentar fazer algo proibido, o sistema operacional o fecha sem derrubar o computador inteiro.
+
+Modo Kernel: 
+O que é: É o modo privilegiado onde roda o núcleo do sistema operacional (o Kernel) e os drivers de dispositivos
+
+.Como funciona: Nesse modo, o software tem acesso total e irrestrito ao hardware e à memória. Qualquer falha aqui pode travar o computador completamente (gerando a famosa "tela azul").
 
 # O papel das System calls:
 
